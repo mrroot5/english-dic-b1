@@ -19,9 +19,16 @@ class Level(models.Model):
 class Word(models.Model):
     english_word = models.CharField(max_length=60, help_text="Ex. Travel")
     spanish_word = models.CharField(max_length=60, help_text="Ex. Viajar")
-    spanish_pronunciation = models.CharField(max_length=60, help_text="Ex. trável (puedes usar las tildes para acentuar donde se hace el énfasis en la pronunciación)", null=True, blank=True)
-    phonetics = models.CharField(max_length=60, help_text="Ex. /ˈtræv(ə)l/. Get it on: https://www.macmillandictionary.com/", null=True, blank=True)
-    notes = models.TextField(max_length=settings.DEFAULT_TEXTAREA_SIZE, help_text="Ex. Suele usarse como verbo, rara como sustantivo o adjetivo", null=True, blank=True)
+    spanish_pronunciation = models.CharField(max_length=60,
+                                             help_text="Ex. trável (puedes usar las tildes para acentuar donde se hace el énfasis en la pronunciación)",
+                                             null=True, blank=True)
+    phonetics = models.CharField(max_length=60,
+                                 help_text="Ex. /ˈtræv(ə)l/. Get it on: https://www.macmillandictionary.com/",
+                                 null=True, blank=True)
+    notes = models.TextField(max_length=settings.DEFAULT_TEXTAREA_SIZE,
+                             help_text="Ex. Suele usarse como verbo, rara como sustantivo o adjetivo", null=True,
+                             blank=True)
+    is_important = models.BooleanField(default=False, help_text="This word has extra score for exams in the same level")
     category = models.ManyToManyField(Category)
     level = models.ForeignKey(Level, on_delete=models.CASCADE)
 
