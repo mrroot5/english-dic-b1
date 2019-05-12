@@ -1,0 +1,10 @@
+{% extends 'commons/base.html' %}
+
+{% block title %}- Dashboard{% endblock title %}
+
+{% block content %}
+<h1>English Dictionary: Intermediate 1</h1>
+<h3>HELLO <span class="light-blue-text text-lighten-1">{{ user.get_username }}</span>!!!</h3>
+<p>If you want to see a <strong>full</strong> words list, please click the <strong>"Words"</strong> option inside the menu.</p>
+<p>Also, you can add or edit words inside the same menu option.</p>
+{% endblock content %}

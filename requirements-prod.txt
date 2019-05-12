@@ -1,0 +1,6 @@
+django<2.1
+djangorestframework
+gunicorn
+# Renombrado, ahora contiene binary
+psycopg2-binary
+

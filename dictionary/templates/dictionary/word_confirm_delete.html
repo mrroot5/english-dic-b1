@@ -1,0 +1,20 @@
+{% extends 'commons/base.html' %}
+
+{% block title %}- Delete {{ object.english_word }}{% endblock title %}
+
+{% block content %}
+<h1>Delete Word</h1>
+<section class="pretty-top">
+  <p>Are you sure you want to delete "{{ object.english_word }}"?</p>
+  <hr>
+  {% if form.errors %}
+  <div class="col s12 red-text">
+    {{ form.errors }}
+  </div>
+  {% endif %}
+  <form action="" method="post">
+    {% csrf_token %}
+    <button type="submit" class="col s12 red waves-effect waves-light btn-large">Confirm</button>
+  </form>
+</section>
+{% endblock content %}
