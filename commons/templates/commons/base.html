@@ -1,0 +1,80 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- /Meta -->
+  <!-- Icons -->
+  <link rel="shortcut icon" href="{% static "commons/images/icons/icon.ico" %}" type="image/x-icon">
+  <link rel="icon" href="{% static "commons/images/icons/icon.png" %}">
+  <link rel="icon" sizes="32x32" href="{% static "commons/images/icons/icon-32x32.png" %}">
+  <link rel="icon" sizes="57x57" href="{% static "commons/images/icons/icon-57x57.png" %}">
+  <link rel="icon" sizes="72x72" href="{% static "commons/images/icons/icon-72x72.png" %}">
+  <link rel="icon" sizes="76x76" href="{% static "commons/images/icons/icon-76x76.png" %}">
+  <link rel="icon" sizes="96x96" href="{% static "commons/images/icons/icon-96x96.png" %}">
+  <link rel="icon" sizes="114x114" href="{% static "commons/images/icons/icon-114x114.png" %}">
+  <link rel="icon" sizes="128x128" href="{% static "commons/images/icons/icon-128x128.png" %}">
+  <link rel="icon" sizes="144x144" href="{% static "commons/images/icons/icon-144x144.png" %}">
+  <link rel="icon" sizes="152x152" href="{% static "commons/images/icons/icon-152x152.png" %}">
+  <link rel="icon" sizes="192x192" href="{% static "commons/images/icons/icon-192x192.png" %}">
+  <link rel="icon" sizes="384x384" href="{% static "commons/images/icons/icon-384x384.png" %}">
+  <link rel="icon" sizes="512x512" href="{% static "commons/images/icons/icon-512x512.png" %}">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- /Icons -->
+  <title>English Dictionary Intermediate 1 {% block title %}{% endblock title %}</title>
+  <link rel="manifest" href="{% static "commons/manifest.json" %}">
+  <!-- Plugins -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.16/b-1.5.1/b-html5-1.5.1/b-print-1.5.1/r-2.2.1/datatables.min.css"/>
+  <!-- /Plugins -->
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="{% static "commons/css/commons.css" %}">
+  <!-- /Custom Styles -->
+</head>
+<body>
+  {% if user.is_authenticated %}
+  <header>
+    <nav class="light-blue lighten-1">
+      <div class="nav-wrapper">
+        <a href="{% url 'dashboard' %}" class="brand-logo center">
+          <img src="{% static "commons/images/icons/icon-32x32.png" %}" class="circle responsive-img" alt="Logo" title="English Intermediate 1">
+        </a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="hide-on-med-and-down">
+          <li><a href="{% url 'words_list' %}">Words</a></li>
+          <li><a href="{% url 'words_create' %}">New word</a></li>
+          <li><a href="{% url 'logout' %}" class="right">Logout</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a href="{% url 'words_list' %}">Words</a></li>
+          <li><a href="{% url 'words_create' %}">New word</a></li>
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  {% endif %}
+  <main class="container">
+    <section class="row">
+      <div class="col s12">
+        {% block content %}
+        <h1>HELLO WORLD!!</h1>
+        {% endblock content %}
+      </div>
+    </section>
+  </main>
+  <!-- Plugins -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <!-- Datatables -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.16/b-1.5.1/b-html5-1.5.1/b-print-1.5.1/r-2.2.1/datatables.min.js"></script>
+  <!-- Datatables -->
+  <!-- /Plugins -->
+  <script src="{% static "commons/js/commons.js" %}"></script>
+  {% block js_scripts %}{% endblock js_scripts %}
+</body>
+</html>

@@ -1,0 +1,106 @@
+{% extends 'commons/base.html' %}
+
+{% block title %}- New Word{% endblock title %}
+
+{% block content %}
+<h1>{{ header_text|default:"Word" }}</h1>
+<section class="pretty-top">
+  {% if form.errors %}
+  <div class="col s12 red-text">
+    {{ form.errors }}
+  </div>
+  {% endif %}
+  <form class="col s12" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="row">
+      {% if field.errors %}
+      <div class="red-text">
+        {{ field.errors }}
+      </div>
+      {% endif %}
+      <div class="input-field col s12">
+        <label for="{{ field.name }}" class="active">{{ field.label }}</label>
+        {{ field }}
+        {% if field.help_text %}
+        <span class="helptext">{{ field.help_text|safe }}</span>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+    <button type="submit" class="col s12 waves-effect waves-light btn-large">
+      <i class="material-icons left">save</i>
+      Save
+      <i class="material-icons right">save</i>
+    </button>
+  </form>
+</section>
+{% endblock content %}
+
+{% block js_scripts %}
+<script>
+var myResponseFunction = function (data) {
+  $('#response').html('data: ' + JSON.stringify(data));
+};
+
+// Creamos la funcion y le agregamos el parametro callback
+// (ademas de otros que pueda necesitar)
+function myAJAXFunction(event) {
+    $.ajax({
+        method: 'POST',
+        url: '/echo/json/',
+        dataType: 'json',
+        data: {
+            json: JSON.stringify({
+                'foo': 'bar'
+            })
+        }
+    }).done(function(response) {
+      // Una vez se raliza la peticion devolvemos la respuesta
+      myResposeFunction(response);
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+      window.console.error('Error ' + textStatus + ': ' + errorThrown);
+    });
+}
+
+// Invocamos a la funcion que hace la llamada AJAX y
+// le pasamos como parametro la funcion que gestionara la respuesta AJAX
+$('#button').on('click', myAJAXFunction);
+
+$.ajax({
+    "url": "your_url_here",
+    "method": "GET",
+    "data": $.param({}),
+    "dataType": "json",
+    "timeout": 30000 // 30 seconds
+}).done(function (response) {
+    try {
+        if (response.ok) {
+            window.console.log(response);
+        } else {
+            throw response.error;
+        }
+    } catch (err) {
+        window.alert("Error");
+        window.console.error('Error: ' + err);
+    }
+}).fail(function (jqXHR, textStatus, errorThrown) {
+    window.alert("Error");
+    window.console.error(textStatus + ': ' + errorThrown);
+});
+
+  $(document).ready(function() {
+    function capitalizeFirstWord(text) {
+      return text.charAt(0).toUpperCase() + text.slice(1);
+    }
+
+    $("form").on("submit", function(ev) {
+      document.getElementById("id_english_word").value = capitalizeFirstWord(document.getElementById("id_english_word").value);
+      document.getElementById("id_spanish_word").value = capitalizeFirstWord(document.getElementById("id_spanish_word").value);
+      document.getElementById("id_spanish_pronunciation").value = capitalizeFirstWord(document.getElementById("id_spanish_pronunciation").value);
+      document.getElementById("id_phonetics").value = capitalizeFirstWord(document.getElementById("id_phonetics").value);
+      document.getElementById("id_notes").value = capitalizeFirstWord(document.getElementById("id_notes").value);
+    });
+  });
+</script>
+{% endblock js_scripts %}

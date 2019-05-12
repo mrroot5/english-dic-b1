@@ -1,0 +1,56 @@
+{% extends 'commons/base.html' %}
+
+{% block title %}- Word Detail{% endblock title %}
+
+{% block content %}
+<section class="pretty-top">
+  <h1>Word Detail</h1>
+  <section class="col s12 card bordered">
+    <div class="card-content">
+      <span class="card-title">English word</span>
+      <div class="divider"></div>
+      <p class="section">{{ object.english_word }}</p>
+    </div>
+  </section>
+
+  <section class="col s12 card bordered">
+    <div class="card-content">
+      <span class="card-title">Spanish word</span>
+      <div class="divider"></div>
+      <p class="section">{{ object.spanish_word }}</p>
+    </div>
+  </section>
+
+  <section class="col s12 card bordered">
+    <div class="card-content">
+      <span class="card-title">Spanish pronunciation</span>
+      <div class="divider"></div>
+      <p class="section">{{ object.spanish_pronunciation }}</p>
+    </div>
+  </section>
+
+  <section class="col s12 card bordered">
+    <div class="card-content">
+      <span class="card-title">Phonetics</span>
+      <div class="divider"></div>
+      <p class="section">{{ object.phonetics }}</p>
+    </div>
+  </section>
+
+  <section class="col s12 card bordered">
+    <div class="card-content">
+      <span class="card-title">Note</span>
+      <div class="divider"></div>
+      <p class="section">{{ object.notes }}</p>
+    </div>
+  </section>
+
+  <section class="col s12 card bordered">
+    <div class="card-content">
+      <span class="card-title">Category</span>
+      <div class="divider"></div>
+      <p class="section">{{ object.category }}</p>
+    </div>
+  </section>
+</section>
+{% endblock content %}
