@@ -1,0 +1,22 @@
+{
+  "name": "english-dic-b1",
+  "version": "0.0.1",
+  "description": "My personal english dictionary from A1 to B1",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrroot5/english-dic-b1.git"
+  },
+  "author": "Adrián Garrido García",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mrroot5/english-dic-b1/issues"
+  },
+  "homepage": "https://github.com/mrroot5/english-dic-b1#readme"
+}
