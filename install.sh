@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Delete old enviorement_________"
-rm -rf virtualenv
+rm -rf venv
 echo -e "Done\n"
 echo "Install requirements.apt_______"
 if [ -s "requirements.apt" ]
@@ -9,10 +9,10 @@ then
 fi
 echo -e "Done\n"
 echo "Create environment_____________"
-virtualenv -p python3 virtualenv
+virtualenv -p python3 venv
 echo -e "Done\n"
 echo "Start environment______________"
-source virtualenv/bin/activate
+source venv/bin/activate
 echo -e "Done\n"
 echo "Install requirements-dev.txt_______"
 if [ -s "requirements-dev.txt" ]
