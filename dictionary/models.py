@@ -30,7 +30,11 @@ class Word(models.Model):
                              blank=True)
     is_important = models.BooleanField(default=False, help_text="This word has extra score for exams in the same level")
     category = models.ManyToManyField(Category)
-    level = models.ForeignKey(Level, on_delete=models.CASCADE)
+    level = models.ForeignKey(Level, on_delete=models.CASCADE, default=2)
+
+    def get_categories(self):
+        return ", ".join([l.name for l in self.category.all()])
+
 
     def __str__(self):
         return 'Word({} - {})'.format(self.english_word, self.spanish_word)

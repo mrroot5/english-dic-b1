@@ -27,7 +27,7 @@ class CategoryViewSet(mixins.CreateModelMixin,
 
 
 class WordViewSet(viewsets.ModelViewSet):
-    permission_classes = (permissions.IsAdminUser,)
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     queryset = Word.objects.all()
     serializer_class = WordSerializer
     filter_backends = (DjangoFilterBackend, OrderingFilter,)
