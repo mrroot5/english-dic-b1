@@ -23,7 +23,7 @@ class Word(models.Model):
                                              help_text="Ex. trável (puedes usar las tildes para acentuar donde se hace el énfasis en la pronunciación)",
                                              null=True, blank=True)
     phonetics = models.CharField(max_length=60,
-                                 help_text="Ex. /ˈtræv(ə)l/. Get it on: https://www.macmillandictionary.com/",
+                                 help_text="Ex. /ˈtræv(ə)l/. Get it on: https://www.wordreference.com/",
                                  null=True, blank=True)
     notes = models.TextField(max_length=settings.DEFAULT_TEXTAREA_SIZE,
                              help_text="Ex. Suele usarse como verbo, rara como sustantivo o adjetivo", null=True,
