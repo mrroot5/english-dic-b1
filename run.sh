@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Activate enviorement"
-source virtualenv/bin/activate
+source venv/bin/activate
 echo "Database changes"
 ./manage.py makemigrations dictionary
 ./manage.py migrate

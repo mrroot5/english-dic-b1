@@ -8,7 +8,7 @@ class CategoryInline(admin.TabularInline):
 
 @admin.register(Word)
 class WordAdmin(admin.ModelAdmin):
-    list_display = ["english_word", "spanish_word", "spanish_pronunciation", "phonetics", "notes", "level"]
+    list_display = ["english_word", "spanish_word", "spanish_pronunciation", "get_categories", "level", "is_important"]
     inlines = (CategoryInline,)
     exclude = ('category',)
 

@@ -1,4 +1,7 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, permissions, mixins
+from rest_framework.filters import OrderingFilter
+
 from .serializers import *
 from .models import *
 
@@ -24,6 +27,11 @@ class CategoryViewSet(mixins.CreateModelMixin,
 
 
 class WordViewSet(viewsets.ModelViewSet):
-    permission_classes = (permissions.IsAdminUser,)
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     queryset = Word.objects.all()
     serializer_class = WordSerializer
+    filter_backends = (DjangoFilterBackend, OrderingFilter,)
+    filterset_fields = ("english_word", "spanish_word", "category",)
+    filter_fields = ("english_word", "spanish_word", "category",)
+    ordering_fields = ("english_word", "spanish_word", "category",)
+    ordering = ("category",)

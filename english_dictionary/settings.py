@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'commons',
     'dictionary',
     'rest_framework',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
