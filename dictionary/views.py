@@ -1,4 +1,5 @@
-from django_filters.rest_framework import DjangoFilterBackend
+from django_filters import CharFilter
+from django_filters.rest_framework import DjangoFilterBackend, FilterSet
 from rest_framework import viewsets, permissions, mixins
 from rest_framework.filters import OrderingFilter
 
@@ -6,6 +7,17 @@ from .serializers import *
 from .models import *
 
 
+# FILTERS
+class WordFilter(FilterSet):
+    english_word_contains = CharFilter(field_name="english_word", lookup_expr='contains')
+    spanish_word_contains = CharFilter(field_name="spanish_word", lookup_expr='contains')
+
+    class Meta:
+        model = Word
+        fields = ["english_word_contains", "spanish_word_contains", "category"]
+
+
+# VIWSETS
 class LevelViewSet(mixins.CreateModelMixin,
                     mixins.RetrieveModelMixin,
                     mixins.ListModelMixin,
@@ -31,7 +43,6 @@ class WordViewSet(viewsets.ModelViewSet):
     queryset = Word.objects.all()
     serializer_class = WordSerializer
     filter_backends = (DjangoFilterBackend, OrderingFilter,)
-    filterset_fields = ("english_word", "spanish_word", "category",)
-    filter_fields = ("english_word", "spanish_word", "category",)
+    filter_class = WordFilter
     ordering_fields = ("english_word", "spanish_word", "category",)
     ordering = ("category",)

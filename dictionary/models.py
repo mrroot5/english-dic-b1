@@ -35,6 +35,5 @@ class Word(models.Model):
     def get_categories(self):
         return ", ".join([l.name for l in self.category.all()])
 
-
     def __str__(self):
         return 'Word({} - {})'.format(self.english_word, self.spanish_word)
