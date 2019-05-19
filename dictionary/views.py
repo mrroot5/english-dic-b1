@@ -1,4 +1,5 @@
-from django_filters.rest_framework import DjangoFilterBackend
+from django_filters import CharFilter
+from django_filters.rest_framework import DjangoFilterBackend, FilterSet
 from rest_framework import viewsets, permissions, mixins
 from rest_framework.filters import OrderingFilter
 
@@ -6,6 +7,7 @@ from .serializers import *
 from .models import *
 
 
+# VIEWSETS
 class LevelViewSet(mixins.CreateModelMixin,
                     mixins.RetrieveModelMixin,
                     mixins.ListModelMixin,
@@ -35,3 +37,5 @@ class WordViewSet(viewsets.ModelViewSet):
     filter_fields = ("english_word", "spanish_word", "category",)
     ordering_fields = ("english_word", "spanish_word", "category",)
     ordering = ("category",)
+
+
