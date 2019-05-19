@@ -46,3 +46,5 @@ class WordViewSet(viewsets.ModelViewSet):
     filter_class = WordFilter
     ordering_fields = ("english_word", "spanish_word", "category",)
     ordering = ("category",)
+
+
