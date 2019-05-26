@@ -16,8 +16,10 @@ class WordAdmin(admin.ModelAdmin):
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ["name"]
+    ordering = ("name",)
 
 
 @admin.register(Level)
 class LevelAdmin(admin.ModelAdmin):
     list_display = ["name"]
+    ordering = ("name",)
