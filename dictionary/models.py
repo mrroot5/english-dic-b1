@@ -18,7 +18,7 @@ class Level(models.Model):
 
 class Word(models.Model):
     english_word = models.CharField(max_length=60, help_text="Ex. Travel")
-    spanish_word = models.CharField(max_length=60, help_text="Ex. Viajar")
+    spanish_word = models.CharField(max_length=100, help_text="Ex. Viajar")
     spanish_pronunciation = models.CharField(max_length=60,
                                              help_text="Ex. trável (puedes usar las tildes para acentuar donde se hace el énfasis en la pronunciación)",
                                              null=True, blank=True)

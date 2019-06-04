@@ -1,9 +1,6 @@
 # Python
 __pycache__
 
-# Django
-migrations
-
 # Environtment
 venv
 virtualenv
