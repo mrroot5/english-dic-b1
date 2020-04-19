@@ -4,6 +4,7 @@ __pycache__
 # Environtment
 venv
 virtualenv
+env
 
 # IDE
 .vscode
